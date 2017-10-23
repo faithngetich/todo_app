@@ -33,4 +33,18 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+
+    # Or, choose the following (which implies all of the above):
+    with.library :rails
+  end
 end

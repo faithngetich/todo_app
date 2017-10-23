@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   let(:invalid_email_1) { "base@example" }
   let(:invalid_email_2) { "blah" }
 
-  context "validations" do
+  context "with validations" do
     let(:user) { create(:user) }
     # validations
     it { expect(user).to allow_value(valid_email).for(:email) }
@@ -13,17 +13,17 @@ RSpec.describe User, type: :model do
     it { expect(user).to_not allow_value(invalid_email_2).for(:email) }
   end
 
-  context "validations #2" do
+  context "with validations #2" do
     subject { build(:user) }
 
     # test email validation
-    it { should allow_value(valid_email).for(:email) }
-    it { should_not allow_value(invalid_email_1).for(:email) }
-    it { should_not allow_value(invalid_email_2).for(:email) }
+    it { is_expected.to allow_value(valid_email).for(:email) }
+    it { is_expected.not_to allow_value(invalid_email_1).for(:email) }
+    it { is_expected.not_to allow_value(invalid_email_2).for(:email) }
 
     # test presence and uniqueness
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:email) }
-    it { should validate_uniqueness_of(:email) }
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_uniqueness_of(:email) }
   end
 end

@@ -33,6 +33,10 @@ RSpec.configure do |config|
       example.run
     end
   end
+
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
 end
 
 Shoulda::Matchers.configure do |config|

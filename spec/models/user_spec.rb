@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:valid_email) { "dhh@nonopinionated.com" }
-  let(:invalid_email_1) { "base@example" }
-  let(:invalid_email_2) { "blah" }
+  let(:valid_email) { 'dhh@nonopinionated.com' }
+  let(:invalid_email_1) { 'base@example' }
+  let(:invalid_email_2) { 'blah' }
 
-  context "with validations" do
+  context 'with validations' do
     let(:user) { create(:user) }
     # validations
     it { expect(user).to allow_value(valid_email).for(:email) }
@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
     it { expect(user).to_not allow_value(invalid_email_2).for(:email) }
   end
 
-  context "with validations #2" do
+  context 'with validations #2' do
     subject { build(:user) }
 
     # test email validation

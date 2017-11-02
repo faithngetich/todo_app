@@ -2,10 +2,18 @@
 
 <%= form_for :user, url: '/users' do |f|%>
 
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul> 
+  <% end %>
+
   Name: <%= f.text_field :name %>
   Email: <%= f.text_field :email %>
   Password: <%= f.password_field :password %>
-  Password Confirmation : <%= f.password_confirmation_field :password_confirmation %>
+  Password Confirmation : <%= f.password_field :password_confirmation %>
   <%= f.submit "Submit" %>
   
 <% end %>

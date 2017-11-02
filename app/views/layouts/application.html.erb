@@ -14,6 +14,15 @@
     <% else %>
       <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
     <% end %>
+
+    <% flash.each do |message_type, message| %>
+      <%# TODO: Move this to a presenter / helper %>
+      <%= content_tag(:div, message, class: "flash-#{message_type}") %>
+      <%# <div class="flash-#{message_type}">
+        <%= message %>
+      <%# </div> %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

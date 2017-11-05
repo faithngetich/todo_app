@@ -4,6 +4,6 @@ class AddColumnsToUser < ActiveRecord::Migration[5.1]
     #   t.string :password_confirmation
     # end
     add_column :users, :password_confirmation, :string
-    add_index :users, [:name, :email], unique: true
+    add_index :users, %i[name email], unique: true
   end
 end

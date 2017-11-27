@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   # Shows a users login form, logging them in, and logging them out
   get 'login' => 'sessions#new'
+  # get 'login', to: 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
 end

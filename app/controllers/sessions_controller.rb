@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
       # Save user id inside the browser cookie.
       # Keeps user logged in as they navigate through the website
       session[:user_id] = @user.id
+      log_in user
+      params[:session][:remember_me] == '1' ? remember(user) :forget(user)
+      remember user
       redirect_to '/'
     else
       # send them back to login
@@ -19,6 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    log_out if logged_in
     render 'new'
   end
 end
